@@ -16,8 +16,21 @@ app.get("/hello",(req,res)=>{
 
 app.post("/update-water-level", (req, res) => {
     const { level } = req.body;
-    const message = level === "HIGH" ? "Water level is HIGH!" : "Water level is LOW!";
-    io.emit("waterLevelUpdate", message);
+    let message = level === "HIGH" ? "Water level is HIGH!" : "Water level is LOW!";
+
+    if(level === "HIGH"){
+        message = "Water level is HIGH!";
+    }else if(level === "LOW"){
+        message = "Water level is LOW!";
+    }else{
+        message = "Water level is NORMAL.";
+    }
+
+    const data = {
+        level : level,
+        message :message,
+    }
+    io.emit("waterLevelUpdate", data);
     res.send({ status: "success", message });
 });
 
