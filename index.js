@@ -10,6 +10,10 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
+app.get("/hello",(req,res)=>{
+        res.send("hello there");
+})
+
 app.post("/update-water-level", (req, res) => {
     const { level } = req.body;
     const message = level === "HIGH" ? "Water level is HIGH!" : "Water level is LOW!";
