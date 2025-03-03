@@ -32,6 +32,7 @@ app.post("/update-water-level", (req, res) => {
         message :message,
     }
     io.emit("waterLevelUpdate", data);
+    io.emit("debug",req.body);
     res.send({ status: "success", message });
 });
 
