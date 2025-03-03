@@ -15,6 +15,7 @@ app.get("/hello",(req,res)=>{
 })
 
 app.post("/update-water-level", (req, res) => {
+    console.log(req.body);
     const { level } = req.body;
     let message = level === "HIGH" ? "Water level is HIGH!" : "Water level is LOW!";
 
